@@ -1,0 +1,417 @@
+
+:host {
+  display: block;
+  color: #342b31;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+
+  .logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #b64f79;
+  }
+
+  nav {
+    display: flex;
+    gap: 35px;
+
+    a {
+      text-decoration: none;
+      color: #51454b;
+      font-size: 15px;
+
+      &:hover {
+        color: #c45c86;
+      }
+    }
+  }
+
+  .btn-header {
+    background: #b64f79;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 75px 8%;
+  background: #fff5f7;
+
+  .hero-content {
+    flex: 1;
+
+    .tagline {
+      color: #b64f79;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.15;
+      margin: 20px 0;
+      color: #49333d;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #75656d;
+      max-width: 470px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+
+    img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #b64f79;
+  color: white;
+  padding: 15px 27px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    background: #913b60;
+    transform: translateY(-3px);
+  }
+}
+
+.products {
+  padding: 80px 8%;
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+
+    span {
+      color: #b64f79;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin: 12px 0;
+    }
+
+    p {
+      color: #81747a;
+    }
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+}
+
+.product-card {
+  overflow: hidden;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+  img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 22px;
+
+    .category {
+      color: #b64f79;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 21px;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #81747a;
+      font-size: 14px;
+    }
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+
+    strong {
+      color: #b64f79;
+      font-size: 19px;
+    }
+
+    button {
+      background: #b64f79;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+
+      &:hover {
+        background: #913b60;
+      }
+    }
+  }
+}
+
+.about {
+  text-align: center;
+  padding: 65px 10%;
+  background: #fff5f7;
+
+  h2 {
+    font-size: 30px;
+  }
+
+  p {
+    max-width: 650px;
+    margin: 15px auto;
+    line-height: 1.8;
+    color: #75656d;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 35px 15px;
+  background: #49333d;
+  color: white;
+
+  h3 {
+    font-size: 25px;
+  }
+
+  p {
+    color: #ead9e0;
+  }
+
+  small {
+    color: #d5bdc8;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 18px;
+
+    nav {
+      gap: 15px;
+    }
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 45px 6%;
+
+    .hero-image img {
+      height: 280px;
+    }
+  }
+
+  .products .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SECCIÓN DE INICIO DE SESIÓN */
+.login-section {
+  padding: 60px 20px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 35px;
+  background: #fff7f9;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(80, 40, 50, 0.08);
+}
+
+.login-container h2 {
+  color: #49313b;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.login-container p {
+  color: #806b74;
+  margin-bottom: 22px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-container input {
+  padding: 13px 15px;
+  border: 1px solid #ead5dd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-container input:focus {
+  border-color: #bd4f7b;
+}
+
+.login-container button {
+  padding: 13px;
+  border: none;
+  border-radius: 25px;
+  background: #bd4f7b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #96385f;
+}
+
+.login-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensaje-error {
+  color: #d62828 !important;
+  margin-top: 15px;
+}
+
+.mensaje-exito {
+  color: #27834a !important;
+  margin-top: 15px;
+}
+
+
+/* BOTONES DE ACCIONES */
+.product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.product-actions button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.product-actions button:first-child {
+  background: #f8dce7;
+  color: #bd4d7d;
+}
+
+.product-actions button:first-child:hover {
+  background: #bd4d7d;
+  color: white;
+}
+
+.product-actions button:last-child {
+  background: #ffe5e5;
+  color: #d94343;
+}
+
+.product-actions button:last-child:hover {
+  background: #d94343;
+  color: white;
+}
+
+/* FORMULARIO DE REGISTRO */
+.login-container input,
+.login-container textarea,
+.login-container select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ead0da;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-container textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.login-container button {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* TARJETAS */
+.product-card {
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}

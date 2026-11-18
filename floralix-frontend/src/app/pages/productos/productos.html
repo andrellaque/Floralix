@@ -1,0 +1,157 @@
+
+<section class="products" id="productos">
+
+  <div class="section-heading">
+    <span>NUESTRO CATÁLOGO</span>
+    <h2>Flores que enamoran</h2>
+    <p>Descubre nuestros arreglos más especiales.</p>
+  </div>
+
+  <!-- REGISTRAR PRODUCTO: SOLO ADMINISTRADOR -->
+  @if (sesionActiva && esAdmin) {
+    <div class="login-container">
+      <h2>Registrar nuevo producto</h2>
+      <p>Completa los datos del nuevo arreglo floral.</p>
+
+      <form #productoForm="ngForm" (ngSubmit)="registrarProducto()">
+
+        <input
+          type="text"
+          name="nombre"
+          placeholder="Nombre del producto"
+          [(ngModel)]="nuevoProducto.nombre"
+          required
+          minlength="3"
+        >
+
+        <textarea
+          name="descripcion"
+          placeholder="Descripción del producto"
+          [(ngModel)]="nuevoProducto.descripcion"
+          required
+        ></textarea>
+
+        <input
+          type="number"
+          name="precio"
+          placeholder="Precio en soles"
+          [(ngModel)]="nuevoProducto.precio"
+          min="0.01"
+          step="0.01"
+          required
+        >
+
+        <input
+          type="number"
+          name="stock"
+          placeholder="Cantidad en stock"
+          [(ngModel)]="nuevoProducto.stock"
+          min="0"
+          step="1"
+          required
+        >
+
+        <select
+          name="categoria"
+          [(ngModel)]="nuevoProducto.categoria"
+          required
+        >
+          <option value="">Seleccionar categoría</option>
+          <option value="Ramos">Ramos</option>
+          <option value="Rosas">Rosas</option>
+          <option value="Tulipanes">Tulipanes</option>
+          <option value="Arreglos">Arreglos</option>
+        </select>
+
+        <button
+          type="submit"
+          [disabled]="productoForm.invalid || cargando"
+        >
+          Registrar producto
+        </button>
+
+      </form>
+    </div>
+  }
+
+  <!-- MENSAJES -->
+  @if (error) {
+    <p class="mensaje-error">{{ error }}</p>
+  }
+
+  @if (mensaje) {
+    <p class="mensaje-exito">{{ mensaje }}</p>
+  }
+
+  <!-- LISTADO DE PRODUCTOS -->
+  <div class="product-grid">
+
+    @if (!sesionActiva) {
+      <p class="mensaje">
+        Inicia sesión para visualizar nuestros productos.
+      </p>
+    } @else if (cargando) {
+      <p class="mensaje">Cargando productos...</p>
+    } @else if (productos.length === 0) {
+      <p class="mensaje">
+        Todavía no hay productos disponibles.
+      </p>
+    } @else {
+
+      @for (producto of productos; track producto.id) {
+
+        <article class="product-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600"
+            alt="Arreglo floral"
+          >
+
+          <div class="product-info">
+
+            <span class="category">
+              {{ producto.categoria }}
+            </span>
+
+            <h3>{{ producto.nombre }}</h3>
+
+            <p>{{ producto.descripcion }}</p>
+
+            <div class="product-footer">
+              <strong>
+                S/ {{ producto.precio | number:'1.2-2' }}
+              </strong>
+
+              <span>Stock: {{ producto.stock }}</span>
+            </div>
+
+            @if (esAdmin) {
+              <div class="product-actions">
+
+                <button
+                  type="button"
+                  (click)="editarProducto(producto)"
+                >
+                  ✏️ Editar
+                </button>
+
+                <button
+                  type="button"
+                  (click)="eliminarProducto(producto)"
+                >
+                  🗑️ Eliminar
+                </button>
+
+              </div>
+            }
+
+          </div>
+        </article>
+
+      }
+
+    }
+
+  </div>
+
+</section>

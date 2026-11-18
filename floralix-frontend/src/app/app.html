@@ -1,0 +1,75 @@
+
+<header class="navbar">
+  <div class="logo">🌸 Floralix</div>
+
+  <nav>
+    <a routerLink="/inicio">Inicio</a>
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/nosotros">Nosotros</a>
+    <a href="#login">Iniciar sesión</a>
+  </nav>
+</header>
+
+<main>
+  <section class="login-section" id="login">
+    <div class="login-container">
+
+      @if (!sesionActiva) {
+        <h2>Bienvenido a Floralix</h2>
+        <p>Inicia sesión para acceder a nuestro catálogo.</p>
+
+        <form (ngSubmit)="iniciarSesion()">
+          <input
+            type="text"
+            name="username"
+            placeholder="Usuario"
+            [(ngModel)]="username"
+            required
+          >
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            [(ngModel)]="password"
+            required
+          >
+
+          <button type="submit" [disabled]="cargando">
+            {{ cargando ? 'Ingresando...' : 'Iniciar sesión' }}
+          </button>
+        </form>
+      } @else {
+        <h2>¡Bienvenido a Floralix!</h2>
+        <p>Sesión iniciada correctamente.</p>
+
+        @if (esAdmin) {
+          <span class="category">Administrador</span>
+        } @else {
+          <span class="category">Cliente</span>
+        }
+
+        <button type="button" (click)="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      }
+
+      @if (error) {
+        <p class="mensaje-error">{{ error }}</p>
+      }
+
+      @if (mensaje) {
+        <p class="mensaje-exito">{{ mensaje }}</p>
+      }
+
+    </div>
+  </section>
+
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <h3>🌸 Floralix</h3>
+  <p>Flores que transmiten emociones.</p>
+  <small>© 2026 Floralix. Todos los derechos reservados.</small>
+</footer>
